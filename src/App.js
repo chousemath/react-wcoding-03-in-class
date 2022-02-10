@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  const handleFirstNameChange = (event) => {
+    const value = event.target.value;
+    setFirstName(value);
+  };
+  const handleLastNameChange = (event) => {
+    const value = event.target.value;
+    setLastName(value);
+  };
+  const sayHi = () => {
+    alert(`Hi there ${firstName} ${lastName}`);
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <div className="form-container">
+          <div className="form-row">
+            <input value={firstName} onChange={handleFirstNameChange} />
+          </div>
+          <div className="form-row">
+            <input value={lastName} onChange={handleLastNameChange} />
+          </div>
+          <div className="form-row">
+            <button onClick={sayHi}>
+              Hi there {firstName} {lastName}
+            </button>
+          </div>
+        </div>
       </header>
     </div>
   );
-}
+};
 
 export default App;
